@@ -1,0 +1,26 @@
+@use "sass:map";
+
+$colors: (
+  "primary": #ff4824,
+  "secondary": #1c1818,
+  "background": #0e0c0c,
+);
+
+header {
+  background-color: map.get($colors, "secondary");
+  padding: 1rem;
+  color: map.get($colors, "primary");
+}
+body {
+  background-color: map.get($colors, "background");
+}
+
+h1 {
+  color: map.get($colors, "primary");
+  font-size: 2rem;
+}
+
+h2 {
+  color: map.get($colors, "primary");
+  font-size: 1rem;
+}

@@ -1,0 +1,23 @@
+@use 'sass:map';
+@use '../settings/colors.settings';
+
+.scan-result-item {
+  border: 2px solid transparent;
+
+  &.malicious {
+    border-color: map.get(colors.$colors, 'malicious');
+  }
+  &.suspicious {
+    border-color: map.get(colors.$colors, 'suspicious');
+  }
+  &.harmless {  
+    border-color: map.get(colors.$colors, 'harmless');
+  }
+  &.undetected {
+    border-color: map.get(colors.$colors, 'undetected');
+  }
+  transition: all 0.3s ease;
+  &:hover {
+    scale: 1.05;
+  }
+}

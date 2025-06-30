@@ -10,7 +10,6 @@ export default defineEventHandler(async (event) => {
   }
 
   try {
-    console.log(url);
     const scanResponse = await $fetch(`${config?.public?.baseUrl}/urls`, {
       method: "POST",
       body: new URLSearchParams({ url: url as string }).toString(),

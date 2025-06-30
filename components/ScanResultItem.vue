@@ -1,17 +1,30 @@
 <script setup lang="ts">
-import type { UrlScanResultItem } from '~/models/url-scan';
+import type { UrlScanResultItem } from "~/models/url-scan";
 
 defineProps({
-  result: { type: Object as PropType<UrlScanResultItem>, required: true, default: () => ({}) },
+  result: {
+    type: Object as PropType<UrlScanResultItem>,
+    required: true,
+    default: () => ({}),
+  },
 });
-
 </script>
 
 <template>
-  <article class="border-2 border-gray-300 rounded-md p-2 flex flex-col gap-2">
+  <section
+    :class="[
+      'scan-result-item  border-2 rounded-md p-2 flex flex-col gap-2',
+      result.category,
+    ]"
+  >
     <h2 class="text-lg font-bold">{{ result.engine_name }}</h2>
-    <p class="text-sm text-gray-500 capitalize">Category: {{ result.category }}</p>
-    <p class="text-sm text-gray-500 capitalize">Result: {{ result.result }}</p>
-    <p class="text-sm text-gray-500 capitalize">Method: {{ result.method }}</p>
-  </article>
+    <div :class="['flex flex-col gap-2', result.result.toLowerCase()]">
+      <p class="text-sm text-white capitalize">
+        Category: {{ result.category }}
+      </p>
+      <p class="text-sm text-white capitalize">
+        Result: {{ result.result }}
+      </p>
+    </div>
+  </section>
 </template>

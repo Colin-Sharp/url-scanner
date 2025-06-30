@@ -1,0 +1,28 @@
+@use 'sass:map';
+@use '../settings/colors.settings';
+
+.result-summary {
+  width: auto;
+  margin: 0.2rem;
+  border: 2px solid #ccc;
+  border-radius: 0.375rem;
+  color: map.get(colors.$colors, 'text');
+
+  &.malicious {
+    border-color: map.get(colors.$colors, 'malicious');
+  }
+  &.suspicious {
+    border-color: map.get(colors.$colors, 'suspicious');
+  }
+  &.harmless {  
+    border-color: map.get(colors.$colors, 'harmless');
+  }
+
+  .top-summary {
+    background-color: rgba(114, 102, 102, 0.2);
+  }
+  transition: all 0.3s ease;
+  &:hover {
+    scale: 1.05;
+  }
+}

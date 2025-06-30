@@ -1,0 +1,6 @@
+@use "sass:map";
+@use "../settings/colors.settings.scss";
+
+body {
+  background-color: map.get(colors.$colors, "background");
+}

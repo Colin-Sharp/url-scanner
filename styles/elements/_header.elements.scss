@@ -1,0 +1,8 @@
+@use "sass:map";
+@use '../settings/colors.settings';
+
+header {
+  background-color: map.get(colors.$colors, "secondary");
+  padding: 1rem;
+  color: map.get(colors.$colors, "text");
+}

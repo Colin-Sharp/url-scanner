@@ -3,7 +3,7 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-05-15',
   devtools: { enabled: true },
   modules: ['@vueuse/nuxt', '@nuxtjs/tailwindcss', '@pinia/nuxt', '@pinia/nuxt'],
-  css: ["~/assets/css/main.scss"],
+  css: ["~/styles/styles.scss"],
   app: {
     head: {
       title: 'Security Scanner',

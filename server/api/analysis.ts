@@ -18,7 +18,6 @@ export default defineEventHandler(async (event) => {
     });
   }
 
-  console.log(id);
   try {
     const response = await $fetch(`${config?.public?.baseUrl}/analyses/${id}`, {
       headers: {

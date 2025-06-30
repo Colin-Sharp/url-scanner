@@ -9,7 +9,7 @@
     <main class="px-4 my-8 max-w-screen-lg mx-auto">
       <slot />
     </main>
-    <footer class="text-center text-sm text-gray-500">
+    <footer class="text-center fixed bottom-0 w-full bg-gray-700 bg-opacity-20 py-2 text-sm text-gray-500">
       <p>
         &copy; {{ new Date().getFullYear() }}
         <a href="https://www.virustotal.com" target="_blank" class="text-blue-500"

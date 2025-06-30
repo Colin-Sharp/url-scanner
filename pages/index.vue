@@ -5,32 +5,23 @@ const state = reactive({
   url: "",
   isLoading: false,
   exampleUrls: {
-    google: { url: "https://www.google.com", isDummy: false },
-    malicious: { url: "malicious", isDummy: true },
+    harmless: { url: "https://www.google.com", isDummy: false },
     phishing: { url: "phishing", isDummy: true },
     malware: { url: "malware", isDummy: true },
   },
 });
 
 const scanUrl = async (url: string, isDummy: boolean = false) => {
-    if (isDummy) {
-        router.push({ path: `/analysis`, query: { id: url } });
-        return;
-    }
+  if (isDummy) {
+    router.push({ path: `/analysis`, query: { id: url } });
+    return;
+  }
   try {
     const scanResponse = await $fetch(`/api/virustotal?url=${url}`);
 
-   
-    // await new Promise((resolve) => setTimeout(resolve, 5000));
     const analysisId = (scanResponse as any).data.id;
 
     router.push({ path: `/analysis`, query: { id: analysisId } });
-
-
-    const analysisResponse = await $fetch("/api/analysis", {
-      method: "GET",
-      query: { id: analysisId },
-    });
   } catch (error) {
     console.log(error);
   }
@@ -38,14 +29,29 @@ const scanUrl = async (url: string, isDummy: boolean = false) => {
 </script>
 
 <template>
-  <div class="flex flex-col items-center justify-center h-screen">
-    <h1 class="text-4xl font-bold">Scan URL</h1>
-    <input class="border-2 border-gray-300 rounded-md p-2" type="text" v-model="state.url" />
-    <button class="bg-blue-500 text-white p-2 rounded-md" :disabled="state.isLoading || !state.url" @click="scanUrl(state.url)">Scan</button>
-    <p>Example URLs:</p>
+  <div class="flex flex-col items-center justify-center h-[calc(100vh-10rem)]">
+    <h1 class="text-4xl font-bold mb-4">Scan URL</h1>
+    <input
+      class="input"
+      type="text"
+      v-model="state.url"
+    />
+    <button
+      class="button mt-4"
+      :disabled="state.isLoading || !state.url"
+      @click="scanUrl(state.url)"
+    >
+      Scan
+    </button>
+    <p class="text-white mt-4">Example URLs:</p>
     <ul>
       <li v-for="(url, key) in state.exampleUrls" :key="key">
-        <button class="bg-blue-500 text-white p-2 rounded-md" @click="scanUrl(url.url, url.isDummy)">{{ key }}</button>
+        <button
+          class="button my-2"
+          @click="scanUrl(url.url, url.isDummy)"
+        >
+          {{ key }}
+        </button>
       </li>
     </ul>
   </div>

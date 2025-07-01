@@ -1,11 +1,11 @@
-@use 'sass:map';
-@use '../settings/colors.settings';
+@use "sass:map";
+@use "../settings/colors.settings";
+@use "../settings/mixins.settings";
 
 .scan-result-item {
   border: 2px solid transparent;
   background-color: rgba(114, 102, 102, 0.2);
-
-  
+  position: relative;
   transition: all 0.3s ease;
   &:hover {
     scale: 1.05;
@@ -15,11 +15,28 @@
     &.suspicious {
       box-shadow: 0 0 10px 0 rgba(255, 255, 0, 0.893);
     }
-    &.harmless {  
+    &.harmless {
       box-shadow: 0 0 10px 0 rgba(0, 255, 0, 0.823);
     }
     &.undetected {
       box-shadow: 0 0 10px 0 rgba(189, 189, 197, 0.5);
     }
+  }
+
+  &.malware {
+    @include mixins.result-icon(red, "/malware.svg");
+  }
+  &.phishing {
+    @include mixins.result-icon(red, "/phishing.svg");
+  }
+  &.clean {
+    @include mixins.result-icon(green, "/clean.svg");
+  }
+  &.suspicious {
+    @include mixins.result-icon(orange, "/suspicious.svg");
+  }
+  &.unrated,
+  &.undetected {
+    @include mixins.result-icon(gray, "/undetected.svg");
   }
 }

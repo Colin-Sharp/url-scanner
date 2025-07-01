@@ -55,18 +55,22 @@ onMounted(async () => {
       }
   }
 });
+
+const isEmptyResults = computed(() => {
+  return state.results && Object.keys(state.results || {}).length === 0;
+});
 </script>
 
 <template>
   <div class="mt-10 mb-16">
-    <section v-if="!state.isLoading && state.results">
+    <section v-if="!state.isLoading && state.results && !isEmptyResults">
       <ResultSummary
         :scannedUrl="state.urlScanned"
         :status="state.analysisResponse?.data.attributes.stats as UrlScanStats"
       />
       <div class="flex flex-wrap">
         <article
-          class="w-full sm:w-1/2 md:w-4/12 p-1 lg:w-1/3"
+          class="w-full sm:w-1/2 md:w-4/12 p-2 lg:w-1/3"
           v-for="(result, key) in state.results"
           :key="key"
         >
@@ -80,5 +84,12 @@ onMounted(async () => {
     >
       <span class="loader"></span>
     </div>
+    <section
+      v-else-if="!state.isLoading && state.results && isEmptyResults"
+      class="flex flex-col items-center justify-center h-[calc(100vh-10rem)]"
+    >
+      <p class="text-white">Sorry, no results found</p>
+      <NuxtLink to="/" class="button mt-4 text-center">Back to home</NuxtLink>
+    </section>
   </div>
 </template>

@@ -4,21 +4,17 @@
 .button {
   background: map.get(colors.$colors, "primary");
   color: map.get(colors.$colors, "text");
-  border: 2px solid map.get(colors.$colors, "primary");
   border-radius: 5px;
   padding: 10px;
   cursor: pointer;
   transition: all 0.5s ease;
   min-width: 300px;
   &:hover {
-    background: map.get(colors.$colors, "text");
-    color: map.get(colors.$colors, "primary");
-    border: 2px solid map.get(colors.$colors, "primary");
+    background: map.get(colors.$colors, "primary-hover");
   }
   &:disabled {
     background: map.get(colors.$colors, "disabled");
     color: map.get(colors.$colors, "text-disabled");
-    border: 2px solid map.get(colors.$colors, "disabled");
     cursor: not-allowed;
   }
 }

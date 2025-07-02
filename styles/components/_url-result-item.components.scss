@@ -8,19 +8,7 @@
   position: relative;
   transition: all 0.3s ease;
   &:hover {
-    scale: 1.05;
-    &.malicious {
-      box-shadow: 0 0 10px 0 rgba(255, 0, 0, 0.5);
-    }
-    &.suspicious {
-      box-shadow: 0 0 10px 0 rgba(255, 255, 0, 0.893);
-    }
-    &.harmless {
-      box-shadow: 0 0 10px 0 rgba(0, 255, 0, 0.823);
-    }
-    &.undetected {
-      box-shadow: 0 0 10px 0 rgba(189, 189, 197, 0.5);
-    }
+    scale: 1.08;
   }
 
   &.malware {

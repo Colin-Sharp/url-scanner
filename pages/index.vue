@@ -31,7 +31,7 @@ const scanUrl = async (url: string, isDummy: boolean = false) => {
 <template>
   <div class="flex flex-col items-center justify-center h-[calc(100vh-10rem)]">
     <h1 class="text-4xl font-bold mb-4">Scan URL</h1>
-    <input class="input" type="text" v-model="state.url" />
+    <input id="url-input" class="input" type="text" v-model="state.url" />
     <button
       class="button mt-4"
       :disabled="state.isLoading || !state.url"

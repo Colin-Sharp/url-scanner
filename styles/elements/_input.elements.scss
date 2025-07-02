@@ -1,20 +1,21 @@
-.input {
-  background-color: #212121;
-  max-width: 190px;
+@use "sass:map";
+@use "../settings/colors.settings.scss";
+
+input.input {
+  background-color: map.get(colors.$colors, "background");
+  max-width: 300px;
   height: 40px;
   padding: 10px;
-  border: 2px solid white;
+  border: 2px solid map.get(colors.$colors, "text");
   border-radius: 5px;
   width: 100%;
-  min-width: 300px;
   color: white;
-}
-
-.input:focus {
-  color: rgb(0, 255, 255);
-  background-color: #212121;
-  outline-color: rgb(0, 255, 255);
-  box-shadow: -3px -3px 15px rgb(0, 255, 255);
-  transition: .1s;
-  transition-property: box-shadow;
+  &:focus, &:focus-visible {
+    color: map.get(colors.$colors, "primary");
+    background-color: map.get(colors.$colors, "background");
+    border: 2px solid map.get(colors.$colors, "primary");
+    transition: 0.1s;
+    transition-property: border;
+    outline: none;
+  }
 }

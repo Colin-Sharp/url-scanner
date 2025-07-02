@@ -7,6 +7,6 @@ h1 {
 }
 
 h2 {
-  color: map.get(colors.$colors, "primary");
+  color: map.get(colors.$colors, "text");
   font-size: 1rem;
 }
